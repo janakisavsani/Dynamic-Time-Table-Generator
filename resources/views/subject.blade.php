@@ -65,6 +65,6 @@ $("#target").submit(function( event ) {
     });
 });
 
-</script
+</script>
 
 </html>
