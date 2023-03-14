@@ -43,32 +43,26 @@
 
 $("#target").submit(function( event ) {
     event.preventDefault();
-    var x = 5;
-    var y = 5;
-    if (x != y) {
-        alert("not ");
-    } else {
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            url : "{{ route('test') }}",
-            type : 'POST',
-            data : $(this).serialize(),
-            success : function(data) {              
-                if (data.status == 'error') {
-                    alert(data.message);
-                }else{
-                    console.log(data)
-                    $('#tableData').html(data.table);
-                }
-            },
-            error : function(request,error)
-            {
-                alert("Request: "+JSON.stringify(request));
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url : "{{ route('test') }}",
+        type : 'POST',
+        data : $(this).serialize(),
+        success : function(data) {              
+            if (data.status == 'error') {
+                alert(data.message);
+            }else{
+                console.log(data)
+                $('#tableData').html(data.table);
             }
-        });
-    }
+        },
+        error : function(request,error)
+        {
+            alert("Request: "+JSON.stringify(request));
+        }
+    });
 });
 
 </script

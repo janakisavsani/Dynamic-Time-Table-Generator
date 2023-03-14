@@ -49,7 +49,7 @@ class TimeTableController extends Controller
                 if ($subject_count >= count($subject_keys)) {
                     $subject_count = 0;
                 }
-                $subject[$subject_key] ?? '--';
+                $subject[$subject_key]--;
                 if ($subject[$subject_key] <= 0) {
                     unset($subject[$subject_key]);
                     $subject_keys = array_keys($subject);
